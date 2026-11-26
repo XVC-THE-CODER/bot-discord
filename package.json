@@ -1,8 +1,12 @@
 {
-  "name": "discord-bot",
+  "name": "discord-bot-vercel",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "register": "node register.js"
+  },
   "dependencies": {
+    "discord-interactions": "^4.1.0",
     "discord.js": "^14.16.3"
   }
 }
