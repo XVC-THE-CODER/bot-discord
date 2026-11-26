@@ -16,13 +16,3 @@ jobs:
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
           DISCORD_APP_ID: ${{ secrets.DISCORD_APP_ID }}
-      - run: npm install -g vercel
-      - run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      - run: vercel env rm DISCORD_TOKEN production --yes --token=${{ secrets.VERCEL_TOKEN }} || true
-      - run: vercel env rm DISCORD_APP_ID production --yes --token=${{ secrets.VERCEL_TOKEN }} || true
-      - run: vercel env rm DISCORD_PUBLIC_KEY production --yes --token=${{ secrets.VERCEL_TOKEN }} || true
-      - run: printf "%s" "${{ secrets.DISCORD_TOKEN }}" | vercel env add DISCORD_TOKEN production --token=${{ secrets.VERCEL_TOKEN }}
-      - run: printf "%s" "${{ secrets.DISCORD_APP_ID }}" | vercel env add DISCORD_APP_ID production --token=${{ secrets.VERCEL_TOKEN }}
-      - run: printf "%s" "${{ secrets.DISCORD_PUBLIC_KEY }}" | vercel env add DISCORD_PUBLIC_KEY production --token=${{ secrets.VERCEL_TOKEN }}
-      - run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      - run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
